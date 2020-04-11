@@ -42,7 +42,6 @@ class App extends Component {
           key={i}
           value={input}
           removeItem={() => this.removeItemHandler(i)}
-          completeItem={() => this.completeItemHandler(i)}
         />
       );
     });

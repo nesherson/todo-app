@@ -1,0 +1,14 @@
+.ListItem {
+  display: flex;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #dbdbdb;
+  padding-bottom: 7px;
+  justify-content: space-between;
+}
+
+.list-item-btn {
+  background-color: #3498db;
+  border: 0;
+  color: #fff;
+  border-radius: 4px;
+}

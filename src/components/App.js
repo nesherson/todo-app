@@ -17,7 +17,6 @@ class App extends Component {
   };
 
   textInputHandler = (event) => {
-    console.log(event.target);
     const text = event.target.value;
     this.setState({ taskText: text });
   };
@@ -35,9 +34,22 @@ class App extends Component {
     this.setState({ listOfTasks: list });
   };
 
+  completeItemHandler = (index) => {
+    const list = [...this.state.listOfTasks];
+    list[index].completed = !list[index].completed;
+    this.setState({ listOfTasks: list });
+  };
+
   render() {
-    const listOfTasks = this.state.listOfTasks.map((task) => {
-      return <Task value={task.body} key={task.id} />;
+    const listOfTasks = this.state.listOfTasks.map((task, index) => {
+      return (
+        <Task
+          value={task.body}
+          key={task.id}
+          completed={task.completed}
+          onClick={() => this.completeItemHandler(index)}
+        />
+      );
     });
 
     return (

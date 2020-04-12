@@ -1,0 +1,13 @@
+.list {
+  border: 1px solid #000;
+  width: 400px;
+}
+
+.list ul {
+  list-style: none;
+}
+
+.list h1 {
+  text-align: center;
+  text-transform: uppercase;
+}

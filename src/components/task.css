@@ -1,3 +1,39 @@
+.task {
+  margin-bottom: 12px;
+  border-bottom: 1px solid #c3c3c3;
+  padding: 7px;
+  font-size: 0.9rem;
+  word-spacing: 0.15rem;
+  display: flex;
+}
+
 .completed {
   text-decoration: line-through;
+}
+
+.checkbox {
+  height: 19px;
+  width: 19px;
+  margin-right: 15px;
+  border-color: #808080;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+
+.checkbox:hover {
+  background-color: #e8e8e8;
+}
+
+.check-item {
+  background-color: #e8e8e8;
+}
+
+.checkbox-svg {
+  margin-left: -4px;
+  margin-top: -3px;
+  opacity: 0;
+}
+
+.check-item-svg {
+  opacity: 1;
 }

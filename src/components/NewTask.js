@@ -4,8 +4,15 @@ import './newTask.css';
 const NewTask = (props) => {
   return (
     <div className='newTask'>
-      <input type='text' placeholder='Add task' onChange={props.onChange} />
-      <button onClick={props.onClick}>Add</button>
+      <form onSubmit={props.onSubmit}>
+        <input
+          value={props.value}
+          type='text'
+          placeholder='Add task'
+          onChange={props.onChange}
+        />
+        <button onClick={props.onClick}>Add Task</button>
+      </form>
     </div>
   );
 };

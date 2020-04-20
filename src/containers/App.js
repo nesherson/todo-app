@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import List from './List';
-import Task from './Task';
-import NewTask from './NewTask';
-import Header from './Header';
+import List from '../components/list/List';
+import Task from '../components/task/Task';
+import NewTask from '../components/newTask/NewTask';
+import Header from '../components/header/Header';
 
 import './App.css';
 

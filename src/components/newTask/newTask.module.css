@@ -2,20 +2,20 @@
   display: flex;
 }
 
-.newTask input {
+input {
   padding: 8px 8px;
   border-radius: 4px;
   border: 0;
   margin: 0 10px 0 10px;
   font-size: 0.9rem;
-  width: 80%;
+  width: 85%;
 }
 
-.newTask input:focus {
+input:focus {
   border: 1px solid #c3c3c3;
 }
 
-.newTask button {
+.btn {
   border-radius: 4px;
   border: 2px solid #506578;
   background-color: #506578;
@@ -23,4 +23,9 @@
   font-size: 0.8rem;
   font-weight: bold;
   padding: 7px 7px;
+  width: 15%;
+}
+
+.hidden {
+  visibility: hidden;
 }

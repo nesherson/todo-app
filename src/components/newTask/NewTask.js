@@ -1,9 +1,9 @@
 import React from 'react';
-import './newTask.css';
+import style from './newTask.module.css';
 
 const NewTask = (props) => {
   return (
-    <div className='newTask'>
+    <div className={style.newTask}>
       <form onSubmit={props.onSubmit}>
         <input
           value={props.value}
@@ -11,7 +11,12 @@ const NewTask = (props) => {
           placeholder='Add task'
           onChange={props.onChange}
         />
-        <button onClick={props.onClick}>Add Task</button>
+        <button
+          className={props.value === '' ? style.hidden : style.btn}
+          onClick={props.onClick}
+        >
+          Add Task
+        </button>
       </form>
     </div>
   );

@@ -6,46 +6,44 @@ import Header from '../components/header/Header';
 
 import './App.css';
 
-//task -> { id: 1, body: 'text', completed: false or true}
-
 class App extends Component {
   state = {
     listOfTasks: [
       { id: 1, body: 'Wash dishes', completed: false },
       { id: 2, body: 'Read book', completed: false },
     ],
-    taskText: '',
+    input: '',
   };
 
-  textInputHandler = (event) => {
+  handleInput = (event) => {
     const text = event.target.value;
-    this.setState({ taskText: text });
+    this.setState({ input: text });
   };
 
-  addNewTaskHandler = (event) => {
+  handleNewTask = (event) => {
     event.preventDefault();
-    if (this.state.taskText !== '') {
+    if (this.state.input !== '') {
       const id = this.state.listOfTasks.length + 1;
-      const taskText = this.state.taskText;
+      const input = this.state.input;
       const task = {
         id: id,
-        body: taskText,
+        body: input,
         completed: false,
       };
       const list = [...this.state.listOfTasks];
       list.push(task);
       this.setState({ listOfTasks: list });
-      this.setState({ taskText: '' });
+      this.setState({ input: '' });
     }
   };
 
-  completeTaskHandler = (index) => {
+  handleCompleteTask = (index) => {
     const list = [...this.state.listOfTasks];
     list[index].completed = !list[index].completed;
     this.setState({ listOfTasks: list });
   };
 
-  removeTaskHandler = (index) => {
+  handleRemoveTask = (index) => {
     const list = [...this.state.listOfTasks];
     list.splice(index, 1);
     this.setState({ listOfTasks: list });
@@ -58,8 +56,8 @@ class App extends Component {
           value={task.body}
           key={task.id}
           completed={task.completed}
-          onClick={() => this.completeTaskHandler(index)}
-          onDoubleClick={() => this.removeTaskHandler(index)}
+          onClick={() => this.handleCompleteTask(index)}
+          onDoubleClick={() => this.handleRemoveTask(index)}
         />
       );
     });
@@ -71,10 +69,10 @@ class App extends Component {
           <List>
             {listOfTasks}
             <NewTask
-              value={this.state.taskText}
-              onChange={this.textInputHandler}
-              onSubmit={this.addNewTaskHandler}
-              onClick={this.addNewTaskHandler}
+              value={this.state.input}
+              onChange={this.handleInput}
+              onSubmit={this.handleNewTask}
+              onClick={this.handleNewTask}
             />
           </List>
         </div>

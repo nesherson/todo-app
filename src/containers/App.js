@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import List from '../components/list/List';
+import ListOfTasks from '../components/listOfTasks/ListOfTasks';
 import Task from '../components/task/Task';
 import NewTask from '../components/newTask/NewTask';
 import Header from '../components/header/Header';
+import Sidebar from '../components/sidebar/Sidebar';
+import ListOfSections from '../components/listOfSections/ListOfSections';
 
 import './App.css';
 
@@ -12,6 +14,7 @@ class App extends Component {
       { id: 1, body: 'Wash dishes', completed: false },
       { id: 2, body: 'Read book', completed: false },
     ],
+    listOfSections: ['Section 1', 'Section 2'],
     input: '',
   };
 
@@ -61,20 +64,26 @@ class App extends Component {
         />
       );
     });
+    const listOfSections = [...this.state.listOfSections];
 
     return (
       <div className='app'>
         <Header />
-        <div className='container'>
-          <List>
-            {listOfTasks}
-            <NewTask
-              value={this.state.input}
-              onChange={this.handleInput}
-              onSubmit={this.handleNewTask}
-              onClick={this.handleNewTask}
-            />
-          </List>
+        <div className='main'>
+          <Sidebar>
+            <ListOfSections>{listOfSections}</ListOfSections>
+          </Sidebar>
+          <div className='container'>
+            <ListOfTasks name={'Inbox'}>
+              {listOfTasks}
+              <NewTask
+                value={this.state.input}
+                onChange={this.handleInput}
+                onSubmit={this.handleNewTask}
+                onClick={this.handleNewTask}
+              />
+            </ListOfTasks>
+          </div>
         </div>
       </div>
     );

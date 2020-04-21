@@ -1,0 +1,9 @@
+.sidebar {
+  padding-top: 30px;
+  padding-left: 35px;
+  width: 305px;
+  height: calc(100vh - 44px);
+  position: fixed;
+  left: 0;
+  background-color: #fafafa;
+}

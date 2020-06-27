@@ -4,7 +4,8 @@ import Task from '../components/task/Task';
 import NewTask from '../components/newTask/NewTask';
 import Header from '../components/header/Header';
 import Sidebar from '../components/sidebar/Sidebar';
-import ListOfSections from '../components/listOfSections/ListOfSections';
+//import ListOfSections from '../components/listOfSections/ListOfSections';
+import Section from '../components/section/Section';
 
 import './App.css';
 
@@ -14,7 +15,28 @@ class App extends Component {
       { id: 1, body: 'Wash dishes', completed: false },
       { id: 2, body: 'Read book', completed: false },
     ],
-    listOfSections: ['Section 1', 'Section 2'],
+    listOfSections: [
+      {
+        sectionName: 'Inbox',
+        body: [
+          {
+            id: 3,
+            body: 'Wash dishes',
+            completed: false,
+          },
+        ],
+      },
+      {
+        sectionName: 'Inbox 2',
+        body: [
+          {
+            id: 3,
+            body: 'Wash dishes 2',
+            completed: false,
+          },
+        ],
+      },
+    ],
     input: '',
   };
 
@@ -52,6 +74,23 @@ class App extends Component {
     this.setState({ listOfTasks: list });
   };
 
+  handleSection = () => {
+    this.setState({
+      listOfSections: [
+        {
+          sectionName: 'Inbox',
+          sectionBody: [...this.state.listOfTasks],
+        },
+      ],
+    });
+  };
+
+  handleSectionClick = (i) => {
+    this.setState({
+      listOfTasks: [...this.state.listOfSections[i].body],
+    });
+  };
+
   render() {
     const listOfTasks = this.state.listOfTasks.map((task, index) => {
       return (
@@ -64,16 +103,23 @@ class App extends Component {
         />
       );
     });
-    const listOfSections = [...this.state.listOfSections];
+
+    const listOfSections = this.state.listOfSections.map((section, i) => {
+      return (
+        <Section
+          name={section.sectionName}
+          onClick={() => this.handleSectionClick(i)}
+          key={section.sectionName}
+        />
+      );
+    });
 
     return (
       <div className='app'>
         <Header />
         <div className='main'>
-          <Sidebar>
-            <ListOfSections>{listOfSections}</ListOfSections>
-          </Sidebar>
           <div className='container'>
+            <Sidebar>{listOfSections}</Sidebar>
             <ListOfTasks name={'Inbox'}>
               {listOfTasks}
               <NewTask

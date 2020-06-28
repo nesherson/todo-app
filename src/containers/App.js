@@ -38,6 +38,7 @@ class App extends Component {
       },
     ],
     input: '',
+    currentSelected: 0,
   };
 
   handleInput = (event) => {
@@ -56,8 +57,12 @@ class App extends Component {
         completed: false,
       };
       const list = [...this.state.listOfTasks];
+      const tempSectionList = [...this.state.listOfSections];
+
+      tempSectionList[0].body.push(list);
       list.push(task);
       this.setState({ listOfTasks: list });
+      this.setState({ listOfSections: tempSectionList });
       this.setState({ input: '' });
     }
   };
@@ -88,6 +93,7 @@ class App extends Component {
   handleSectionClick = (i) => {
     this.setState({
       listOfTasks: [...this.state.listOfSections[i].body],
+      currentSelected: this.state.listOfSections[i],
     });
   };
 

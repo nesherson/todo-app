@@ -1,25 +1,25 @@
 import React from 'react';
-import style from './newTask.module.css';
+import style from './CustomInput.module.css';
 
-const NewTask = (props) => {
+const CustomInput = (props) => {
   return (
-    <div className={style.newTask}>
+    <div className={style.customInput}>
       <form onSubmit={props.onSubmit}>
         <input
           value={props.value}
           type='text'
-          placeholder='Add task'
+          placeholder={`Add ${props.name}`}
           onChange={props.onChange}
         />
         <button
           className={props.value === '' ? style.hidden : style.btn}
           onClick={props.onClick}
         >
-          Add Task
+          {`Add ${props.name}`}
         </button>
       </form>
     </div>
   );
 };
 
-export default NewTask;
+export default CustomInput;

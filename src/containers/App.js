@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ListOfTasks from '../components/listOfTasks/ListOfTasks';
 import Task from '../components/task/Task';
-import NewTask from '../components/newTask/NewTask';
+import CustomInput from '../components/customInput/CustomInput';
 import Header from '../components/header/Header';
 import Sidebar from '../components/sidebar/Sidebar';
 //import ListOfSections from '../components/listOfSections/ListOfSections';
@@ -72,8 +72,7 @@ class App extends Component {
       const tempSectionList = [...this.state.listOfSections];
       tempSectionList[this.state.currentSelected].listOfTasks.push(task);
 
-      this.setState({ listOfSections: tempSectionList });
-      this.setState({ input: '' });
+      this.setState({ listOfSections: tempSectionList, input: '' });
     }
   };
 
@@ -87,7 +86,7 @@ class App extends Component {
     const tempSectionList = [...this.state.listOfSections];
     tempSectionList.push(section);
 
-    this.setState({ listOfSections: tempSectionList });
+    this.setState({ listOfSections: tempSectionList, sectionNameInput: '' });
   };
 
   handleCompleteTask = (index) => {
@@ -148,7 +147,8 @@ class App extends Component {
           <div className='container'>
             <Sidebar>
               {listOfSections}
-              <NewTask
+              <CustomInput
+                name={'Section'}
                 value={this.state.sectionNameInput}
                 onChange={this.handleSectionNameInput}
                 onSubmit={this.handleNewSection}
@@ -159,7 +159,8 @@ class App extends Component {
               name={this.state.listOfSections[currentSelected].sectionName}
             >
               {listOfTasks}
-              <NewTask
+              <CustomInput
+                name={'Task'}
                 value={this.state.input}
                 onChange={this.handleInput}
                 onSubmit={this.handleNewTask}

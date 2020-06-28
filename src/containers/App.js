@@ -11,17 +11,19 @@ import './App.css';
 
 class App extends Component {
   state = {
-    listOfTasks: [
-      { id: 1, body: 'Wash dishes', completed: false },
-      { id: 2, body: 'Read book', completed: false },
-    ],
+    listOfTasks: [],
     listOfSections: [
       {
         sectionName: 'Inbox',
         body: [
           {
             id: 3,
-            body: 'Wash dishes',
+            body: 'Inbox default task 1',
+            completed: false,
+          },
+          {
+            id: 4,
+            body: 'Inbox default task 2',
             completed: false,
           },
         ],
@@ -31,7 +33,12 @@ class App extends Component {
         body: [
           {
             id: 3,
-            body: 'Wash dishes 2',
+            body: 'Inbox2 default task 1',
+            completed: false,
+          },
+          {
+            id: 4,
+            body: 'Inbox2 default task 2',
             completed: false,
           },
         ],
@@ -49,28 +56,29 @@ class App extends Component {
   handleNewTask = (event) => {
     event.preventDefault();
     if (this.state.input !== '') {
-      const id = this.state.listOfTasks.length + 1;
       const input = this.state.input;
       const task = {
-        id: id,
+        id: input,
         body: input,
         completed: false,
       };
-      const list = [...this.state.listOfTasks];
-      const tempSectionList = [...this.state.listOfSections];
 
-      tempSectionList[0].body.push(list);
-      list.push(task);
-      this.setState({ listOfTasks: list });
+      const tempSectionList = [...this.state.listOfSections];
+      tempSectionList[this.state.currentSelected].body.push(task);
+
       this.setState({ listOfSections: tempSectionList });
       this.setState({ input: '' });
     }
   };
 
   handleCompleteTask = (index) => {
-    const list = [...this.state.listOfTasks];
-    list[index].completed = !list[index].completed;
-    this.setState({ listOfTasks: list });
+    const list = [...this.state.listOfSections];
+    const currentSelected = this.state.currentSelected;
+
+    list[currentSelected].body[index].completed = !list[currentSelected].body[
+      index
+    ].completed;
+    this.setState({ listOfSections: list });
   };
 
   handleRemoveTask = (index) => {
@@ -79,36 +87,30 @@ class App extends Component {
     this.setState({ listOfTasks: list });
   };
 
-  handleSection = () => {
-    this.setState({
-      listOfSections: [
-        {
-          sectionName: 'Inbox',
-          sectionBody: [...this.state.listOfTasks],
-        },
-      ],
-    });
-  };
-
   handleSectionClick = (i) => {
     this.setState({
       listOfTasks: [...this.state.listOfSections[i].body],
-      currentSelected: this.state.listOfSections[i],
+      currentSelected: i,
     });
   };
 
   render() {
-    const listOfTasks = this.state.listOfTasks.map((task, index) => {
-      return (
-        <Task
-          value={task.body}
-          key={task.id}
-          completed={task.completed}
-          onClick={() => this.handleCompleteTask(index)}
-          onDoubleClick={() => this.handleRemoveTask(index)}
-        />
-      );
-    });
+    const currentSelected = this.state.currentSelected;
+    const listOfTasks = this.state.listOfSections[currentSelected].body.map(
+      (task, index) => {
+        return (
+          <Task
+            value={task.body}
+            key={task.id}
+            completed={task.completed}
+            onClick={() => this.handleCompleteTask(index)}
+            onDoubleClick={() => this.handleRemoveTask(index)}
+          />
+        );
+      }
+    );
+
+    console.log(this.state.listOfSections[this.state.currentSelected]);
 
     const listOfSections = this.state.listOfSections.map((section, i) => {
       return (
@@ -126,7 +128,9 @@ class App extends Component {
         <div className='main'>
           <div className='container'>
             <Sidebar>{listOfSections}</Sidebar>
-            <ListOfTasks name={'Inbox'}>
+            <ListOfTasks
+              name={this.state.listOfSections[currentSelected].sectionName}
+            >
               {listOfTasks}
               <NewTask
                 value={this.state.input}

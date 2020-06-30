@@ -97,6 +97,12 @@ class App extends Component {
     });
   };
 
+  handleSelection = (i) => {
+    const slc = this.state.currentSelected === i ? true : false;
+    console.log(slc);
+    return slc;
+  };
+
   render() {
     const currentSelected = this.state.currentSelected;
     const listOfTasks = this.state.listOfSections[
@@ -113,14 +119,13 @@ class App extends Component {
       );
     });
 
-    console.log(this.state.listOfSections[this.state.currentSelected]);
-
     const listOfSections = this.state.listOfSections.map((section, i) => {
       return (
         <Section
           name={section.sectionName}
           onClick={() => this.handleSectionClick(i)}
           key={section.sectionName}
+          isSelected={() => this.handleSelection(i)}
         />
       );
     });

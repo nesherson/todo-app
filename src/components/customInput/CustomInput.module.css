@@ -16,7 +16,7 @@ input:focus {
   background-color: #fff;
 }
 
-.btn {
+.taskBtn {
   border-radius: 4px;
   border: 2px solid #506578;
   background-color: #506578;
@@ -46,8 +46,8 @@ input:focus {
   border: 1px solid #506578;
   background-color: #506578;
   color: #fff;
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   font-weight: bold;
-  padding: 8px 8px;
+  padding: 4px 4px;
   width: 30%;
 }

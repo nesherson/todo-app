@@ -18,7 +18,7 @@ const CustomInput = (props) => {
               ? style.hidden
               : props.name === 'Section'
               ? style.sectionBtn
-              : ''
+              : style.taskBtn
           }
           onClick={props.onClick}
         >

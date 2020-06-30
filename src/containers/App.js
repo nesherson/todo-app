@@ -28,21 +28,6 @@ class App extends Component {
           },
         ],
       },
-      {
-        sectionName: 'Inbox 2',
-        listOfTasks: [
-          {
-            id: 3,
-            body: 'Inbox2 default task 1',
-            completed: false,
-          },
-          {
-            id: 4,
-            body: 'Inbox2 default task 2',
-            completed: false,
-          },
-        ],
-      },
     ],
     input: '',
     sectionNameInput: '',

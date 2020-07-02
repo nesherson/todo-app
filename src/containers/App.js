@@ -17,13 +17,13 @@ class App extends Component {
         sectionName: 'Inbox',
         listOfTasks: [
           {
-            id: 3,
-            body: 'Inbox default task 1',
+            id: 1,
+            body: 'Wash the dishes',
             completed: false,
           },
           {
-            id: 4,
-            body: 'Inbox default task 2',
+            id: 2,
+            body: 'Read an article',
             completed: false,
           },
         ],
@@ -98,9 +98,8 @@ class App extends Component {
   };
 
   handleSelection = (i) => {
-    const slc = this.state.currentSelected === i ? true : false;
-    console.log(slc);
-    return slc;
+    const selected = this.state.currentSelected === i ? true : false;
+    return selected;
   };
 
   render() {
@@ -111,7 +110,7 @@ class App extends Component {
       return (
         <Task
           value={task.body}
-          key={task.id}
+          key={task.body + index}
           completed={task.completed}
           onClick={() => this.handleCompleteTask(index)}
           onDoubleClick={() => this.handleRemoveTask(index)}

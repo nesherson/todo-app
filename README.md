@@ -2,6 +2,8 @@
 
 Simple React To-Do App
 
+![Screenshot](docs/images/screenshot.png)
+
 ## Usage
 
 ```

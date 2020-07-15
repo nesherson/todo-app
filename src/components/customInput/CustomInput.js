@@ -5,6 +5,15 @@ const CustomInput = (props) => {
   return (
     <div className={style.customInput}>
       <form onSubmit={props.onSubmit}>
+        <div className={style.addItem}>
+          <svg className={style.addItemSvg} width='20' height='20'>
+            <path
+              d='M6 6V.5a.5.5 0 0 1 1 0V6h5.5a.5.5 0 1 1 0 1H7v5.5a.5.5 0 1 1-1 0V7H.5a.5.5 0 0 1 0-1H6z'
+              fill='currentColor'
+              fill-rule='evenodd'
+            ></path>
+          </svg>
+        </div>
         <input
           className={props.name === 'Section' ? style.sectionInput : ''}
           value={props.value}

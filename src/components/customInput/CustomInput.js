@@ -10,12 +10,14 @@ const CustomInput = (props) => {
             <path
               d='M6 6V.5a.5.5 0 0 1 1 0V6h5.5a.5.5 0 1 1 0 1H7v5.5a.5.5 0 1 1-1 0V7H.5a.5.5 0 0 1 0-1H6z'
               fill='currentColor'
-              fill-rule='evenodd'
+              fillRule='evenodd'
             ></path>
           </svg>
         </div>
         <input
-          className={props.name === 'Section' ? style.sectionInput : ''}
+          className={
+            props.name === 'Section' ? style.sectionInput : style.taskInput
+          }
           value={props.value}
           type='text'
           placeholder={`Add ${props.name}`}

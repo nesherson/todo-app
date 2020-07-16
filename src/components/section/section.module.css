@@ -1,10 +1,15 @@
 .listItem {
-  margin: 7px 0 0 0;
+  padding: 7px 0 0 0;
   font-size: 1.3rem;
 }
 
 .listItemHl {
-  margin: 7px 0 0 0;
+  padding: 7px 0 0 0;
   font-size: 1.3rem;
   font-weight: bold;
+  background-color: #fff;
+}
+
+.listItem:hover {
+  background-color: #fff;
 }
